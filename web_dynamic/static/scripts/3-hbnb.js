@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
   // look for places_search
   let dict = {};
   $.ajax({
@@ -51,21 +51,18 @@ $(function () {
     }
   });
 
-  // display amenities
-  let d = {};
-  $('input').change(function () {
-    if (this.checked) {
-      d[($(this).attr('data-id'))] = $(this).attr('data-name');
-    } else {
-      delete d[$(this).attr('data-id')];
-    }
-    let output = '';
-    let comma = '';
-    for (let i in d) {
-      output += comma;
-      output += d[i];
-      comma = ', ';
-    }
-    $('div.amenities h4').text(arr);
-  });
+	let my_dict = {};
+
+	$('input[type=checkbox]').click(function () {
+
+		if ($(this).is(':checked')) {
+			my_dict[$(this).data('id')] = $(this).data('name');
+			$('.amenities h4').text(Object.values(my_dict).join(', '));
+		} else if ($(this).not(':checked')) {
+			delete my_dict[$(this).data('id')];
+			$('.amenities h4').text(Object.values(my_dict).join(', '));
+			if (Object.getOwnPropertyNames(my_dict).length === 0)
+				$('.amenities h4').html("&nbsp;");
+		}
+	});
 });

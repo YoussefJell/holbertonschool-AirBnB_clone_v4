@@ -6,6 +6,9 @@
     border: 1px solid #DDDDDD;
     border-radius: 4px;
 }
+li input {
+    margin-right: 10px;
+}
 button {
     position: absolute;
     font-size: 18px;
@@ -49,6 +52,14 @@ button:hover {
 .amenities {
     height: 100%;
     width: 25%;
+}
+.amenities h4{
+    width: 240px;
+    height: 16px;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .popover {
